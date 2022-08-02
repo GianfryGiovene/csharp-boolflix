@@ -3,11 +3,27 @@
 
     var content = ViewData["Jumbotron"] as Film ;
 }
+@model List<VideoContent>
 
+<div class="container-fluid">
+    <div id="Jumbotron" class="text-center w-100 border-bottom">
+        <img src="@content.PictureURL"/> 
+        <h3>@content.Title</h3>
+    </div>
+    <h4>Titoli del momento</h4>
+    <div class="flex-wrap d-flex gap-4 mt-5">
+        @foreach(VideoContent movie in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                  <img src="@movie.PictureURL" class="card-img-top" alt="@movie.Title">
+                  <div class="card-body">
+                        <p class="card-text">@movie.Title</p>
+                        <div class="card-text">
+                            <a href="@Url.Action("Play","Home",new { id = movie.Id, profileId = 1})">play</a>
+                        </div>
+                  </div>
 
-<div>
-    <div id="Jumbotron" class="text-center">
-    <img src="@content.PictureURL"/> 
-    <h3>@content.Title</h3>
+            </div>
+        }
     </div>
 </div>

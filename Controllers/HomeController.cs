@@ -34,6 +34,19 @@ namespace BoolFlix.Controllers
                 
         }
 
+        public IActionResult Play(int id, int profileId)
+        {
+
+            Profile profile = _context.Profiles.Where(x => x.Id == profileId).FirstOrDefault();
+            profile.VideoContents = new List<VideoContent>();
+            VideoContent content = _context.VideoContents.Where(x => x.Id == id).FirstOrDefault();
+            
+            profile.VideoContents.Add(content);
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
 
 
