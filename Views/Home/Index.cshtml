@@ -37,12 +37,12 @@
 
     @if (playlists.Count() > 0)
     {
-         <div >
+         <div class="my-4">
         @foreach(Playlist playlist in playlists)
         {
            
             <h3>@playlist.Title</h3>
-                <div class="flex-wrap d-flex gap-4 mt-5">
+                <div class="flex-wrap d-flex gap-4 ">
                     @foreach (VideoContent movie in playlist.VideoContents)
                     {
                     <div class="card" style="width: 18rem;">
