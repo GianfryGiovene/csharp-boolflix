@@ -8,16 +8,29 @@ namespace BoolFlix.Controllers
     
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BoolflixContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BoolflixContext context)
         {
-            _logger = logger;
+            _context = context;
         }
-        [Route("Home/Index")]
+
+        //private readonly ILogger<HomeController> _logger;
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        
         public IActionResult Index()
         {
-            return View();
+            List<VideoContent> videoContentList = _context.VideoContents.ToList();
+
+            Random rnd = new Random();
+            VideoContent videoContent = videoContentList[rnd.Next(0, videoContentList.Count())];
+
+            ViewData["Jumbotron"] = videoContent;
+            return View("Index",videoContentList);
                 
         }
 

@@ -1,7 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+    var content = ViewData["Jumbotron"] as Film ;
 }
 
+
 <div>
-    Homeee
+    <div id="Jumbotron" class="text-center">
+    <img src="@content.PictureURL"/> 
+    <h3>@content.Title</h3>
+    </div>
 </div>
