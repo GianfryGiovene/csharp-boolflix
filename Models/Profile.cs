@@ -10,10 +10,10 @@ namespace BoolFlix.Models
         public bool IsChild { get; set; }
 
         //one to many
-        public List<Playlist> Playlists { get; set; }
+        public List<Playlist>? Playlists { get; set; }
 
         // many to many
-        public List<VideoContent> VideoContents { get; set; }
+        public List<VideoContent>? VideoContents { get; set; }
 
     }
 }

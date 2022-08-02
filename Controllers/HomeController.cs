@@ -1,9 +1,11 @@
-﻿using BoolFlix.Models;
+﻿using BoolFlix.Context.DB;
+using BoolFlix.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BoolFlix.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -12,11 +14,28 @@ namespace BoolFlix.Controllers
         {
             _logger = logger;
         }
-
+        [Route("Home/Index")]
         public IActionResult Index()
         {
             return View();
+                
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public IActionResult Privacy()
         {

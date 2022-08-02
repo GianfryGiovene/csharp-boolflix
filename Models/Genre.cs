@@ -10,6 +10,6 @@ namespace BoolFlix.Models
         public string Name { get; set; }
 
         // one to many
-        public List<VideoContent> VideoContents { get; set; }
+        public List<VideoContent>? VideoContents { get; set; }
     }
 }

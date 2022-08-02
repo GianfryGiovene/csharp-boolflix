@@ -9,15 +9,21 @@ namespace BoolFlix.Models
         public string Title { get; set; }
         public int Duration { get; set; }
         public bool IsNew { get; set; }    
+        public string PictureURL { get; set; }
 
         // many to one
         public int GenreId { get; set; }
-        public Genre Genre { get; set; }
+        public Genre? Genre { get; set; }
 
         //many to many
-        public List<Playlist> Playlists { get; set; }
+        public List<Playlist>? Playlists { get; set; }
 
         // many to many
-        public List<Profile> Profiles { get; set; }
+        public List<Profile>? Profiles { get; set; }
+
+
+        public VideoContent() 
+        {
+        }
     }
 }
