@@ -25,10 +25,11 @@ namespace BoolFlix.Controllers
         public IActionResult Index()
         {
             List<VideoContent> videoContentList = _context.VideoContents.ToList();
-
+            List<Playlist> playlists = _context.Playlists.ToList();
             Random rnd = new Random();
             VideoContent videoContent = videoContentList[rnd.Next(0, videoContentList.Count())];
-
+            playlists.Add(new PlaylistByDuration(200));
+            ViewData["playlists"] = playlists;
             ViewData["Jumbotron"] = videoContent;
             return View("Index",videoContentList);
                 
@@ -36,15 +37,17 @@ namespace BoolFlix.Controllers
 
         public IActionResult Play(int id, int profileId)
         {
-
+            
             Profile profile = _context.Profiles.Where(x => x.Id == profileId).FirstOrDefault();
             profile.VideoContents = new List<VideoContent>();
             VideoContent content = _context.VideoContents.Where(x => x.Id == id).FirstOrDefault();
-            
+                
+
             profile.VideoContents.Add(content);
 
             _context.SaveChanges();
             return RedirectToAction("Index");
+
         }
 
 

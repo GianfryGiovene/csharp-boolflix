@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-
+    var playlists = ViewData["playlists"] as List<Playlist>;
     var content = ViewData["Jumbotron"] as Film ;
 }
 @model List<VideoContent>
@@ -11,7 +11,9 @@
         <h3>@content.Title</h3>
     </div>
     <h4>Titoli del momento</h4>
-    <div class="flex-wrap d-flex gap-4 mt-5">
+    @if (Model.Count() > 0)
+    {
+        <div class="flex-wrap d-flex gap-4 mt-5">
         @foreach(VideoContent movie in Model)
         {
             <div class="card" style="width: 18rem;">
@@ -26,4 +28,42 @@
             </div>
         }
     </div>
+    }else
+    {
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    }
+
+    @if (playlists.Count() > 0)
+    {
+         <div >
+        @foreach(Playlist playlist in playlists)
+        {
+           
+            <h3>@playlist.Title</h3>
+                <div class="flex-wrap d-flex gap-4 mt-5">
+                    @foreach (VideoContent movie in playlist.VideoContents)
+                    {
+                    <div class="card" style="width: 18rem;">
+                        <img src="@movie.PictureURL" class="card-img-top" alt="@movie.Title">
+                        <div class="card-body">
+                            <p class="card-text">@movie.Title</p>
+                            <div class="card-text">
+                                <a href="@Url.Action("Play","Home",new { id = movie.Id, profileId = 1})">play</a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            }
+        </div>
+    }else
+    {
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    }
+
+
 </div>
