@@ -12,8 +12,8 @@ namespace BoolFlix.Models
         //one to many
         public List<Playlist> Playlists { get; set; }
 
-        //one to many
-        public List<PlaybackHistory> PlaybackHistories { get; set; }
+        // many to many
+        public List<VideoContent> VideoContents { get; set; }
 
     }
 }

@@ -8,9 +8,7 @@ namespace BoolFlix.Context.DB
     {
         public DbSet<Film> Films { get; set; }
 
-        public DbSet<Genre> Genres { get; set; }
-
-        public DbSet<PlaybackHistory> PlaybackHistories { get; set; }        
+        public DbSet<Genre> Genres { get; set; }             
 
         public DbSet<Playlist> Playlists { get; set; }
 

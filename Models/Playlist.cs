@@ -13,5 +13,8 @@ namespace BoolFlix.Models
         public int ProfileId { get; set; }
         public Profile Profile { get; set; }
 
+        //many to many
+        public List<VideoContent> VideoContents { get; set; }
+
     }
 }
